@@ -111,6 +111,17 @@ body {
 }
 
 
+.mainActiveDotElement {
+	width: 15px;
+	height: 15px;
+	border-radius: 50%;
+	display: block;
+	background: #198b4c;
+	position: absolute;
+	top: 8px;
+	z-index: 3;
+}
+
 .mainTitle,
 .smallTitles { 
 	position: absolute;

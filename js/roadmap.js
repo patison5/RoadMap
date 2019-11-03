@@ -7,6 +7,8 @@ window.onload = function () {
 	var dataJSON = [
 		{
 			"title": "Профиль",
+			"icon": "",
+			"_isDone": true,
 			"list": [
 				{
 					"title": "Статистика",
@@ -18,25 +20,29 @@ window.onload = function () {
 				},
 				{
 					"title": "Информация",
-					"status": false,
+					"status": true,
 				}
 			]
 		},
 		{
 			"title": "Топ игроков",
+			"icon": "",
+			"_isDone": true,
 			"list": [
 				{
 					"title": "Списки всех",
-					"status": false,
+					"status": true,
 				},
 				{
 					"title": "Поиск",
-					"status": false,
+					"status": true,
 				},
 			]
 		},
 		{
 			"title": "Квесты",
+			"icon": "",
+			"_isDone": false,
 			"list": [
 				{
 					"title": "Награды",
@@ -50,6 +56,8 @@ window.onload = function () {
 		},
 		{
 			"title": "Банкир",
+			"icon": "",
+			"_isDone": false,
 			"list": [
 				{
 					"title": "Хранение ресов",
@@ -63,6 +71,8 @@ window.onload = function () {
 		},
 		{
 			"title": "Круговое меню",
+			"icon": "",
+			"_isDone": false,
 			"list": [
 				{
 					"title": "Дизайн",
@@ -76,6 +86,8 @@ window.onload = function () {
 		},
 		{
 			"title": "Приведи друга",
+			"icon": "",
+			"_isDone": false,
 			"list": [
 				{
 					"title": "Вк БОТ",
@@ -89,6 +101,8 @@ window.onload = function () {
 		},
 		{
 			"title": "Охотник за головами",
+			"icon": "",
+			"_isDone": false,
 			"list": [
 				{
 					"title": "Дизайн",
@@ -106,6 +120,8 @@ window.onload = function () {
 		},
 		{
 			"title": "Новости обновлений",
+			"icon": "",
+			"_isDone": false,
 			"list": [
 				{
 					"title": "ВК БОТ",
@@ -119,6 +135,8 @@ window.onload = function () {
 		},
 		{
 			"title": "Свинка почтальон",
+			"icon": "",
+			"_isDone": false,
 			"list": [
 				{
 					"title": "ИИ Свинки",
@@ -162,6 +180,15 @@ window.onload = function () {
 		var mainDotElement = document.createElement('span');
 			mainDotElement.className = "main-dot";
 			mainDotElement.style.left = position + 'px';
+
+
+		if (dotData._isDone) {
+			var mainActiveDotElement = document.createElement('span');
+				mainActiveDotElement.className = "mainActiveDotElement";
+				mainActiveDotElement.style.left = position + 5 + 'px';
+
+			mainLine.appendChild(mainActiveDotElement)
+		}
 
 
 		var mainTitle = document.createElement('h1');
@@ -216,6 +243,11 @@ window.onload = function () {
 		var verticalLine = document.createElement('div');
 			verticalLine.className = "verticalLine";
 			verticalLine.style.left = position + mainDotElementWidth / 2  + horisontalLineWidth + 'px';
+
+		// выставляем высотку в зависимости от того, сколько пунктов меню.. (по 40на каждый элемент)
+			verticalLine.style.height = dataJSON[i].list.length * 40 + "px";
+
+
 			mainLine.appendChild(verticalLine)
 		
 		var verticalLineHeight = parseFloat(window.getComputedStyle(document.getElementsByClassName('verticalLine')[i], null).height);
