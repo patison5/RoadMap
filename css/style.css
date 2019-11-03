@@ -1,0 +1,96 @@
+#roadMap {
+	width: 100%;
+	width: 1000px;
+	margin: 300px auto;
+	padding: 15px;
+	position: relative;
+}
+
+#mainLine {
+	height: 5px;
+	background: #198b4c;
+	position: relative;
+}
+
+.main-dot {
+	width: 25px;
+	height: 25px;
+	border-radius: 50%;
+	border: 2px solid #198b4c;
+	display: block;
+	background: #fff;
+	position: absolute;
+	top: 3px;
+}
+
+
+.mainTitle { 
+	position: absolute;
+	font-size: 16px;
+	padding: 0;
+	margin: 0;
+}
+
+.lineToIcon {
+	height: 40px;
+	width: 2px;
+	background: #198b4c;
+	position: absolute;
+}
+
+
+.mainIcon {
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	border: 2px solid #198b4c;
+	display: block;
+	background: #fff;
+	position: absolute;
+	z-index: 2;
+}
+
+/*############*/
+
+#roadMap__wrap {
+	width: 100%;
+	width: 1000px;
+	margin: 300px auto;
+	padding: 15px;
+	position: relative;
+}
+
+#roadMap__main-line {
+	height: 5px;
+	background: #198b4c;
+	position: relative;
+}
+
+.roadMap__main-block {
+	margin-right: 15px;
+	position: relative;
+	display: block;
+}
+
+.roadMap__main-dot {
+	width: 25px;
+	height: 25px;
+	border-radius: 50%;
+	border: 2px solid green;
+	display: block;
+	background: #fff;
+	position: absolute;
+	top: 3px;
+}
+
+
+.roadMap__main-icon {
+	position: absolute;
+	top: -25px;
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	border: 2px solid green;
+	display: block;
+	background: #fff;
+}
