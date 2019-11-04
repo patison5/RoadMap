@@ -2,12 +2,12 @@ window.onload = function () {
 	let container = document.getElementById('roadMap');
 	let WIDTH = parseFloat(window.getComputedStyle(container, null).width);
 
-	let leftPadding = 50;
+	let leftPadding = 50;//50
 
 	var dataJSON = [
 		{
 			"title": "Профиль",
-			"icon": "",
+			"icon": "https://i.imgur.com/T0yO7SW.png",
 			"_isDone": true,
 			"list": [
 				{
@@ -26,7 +26,7 @@ window.onload = function () {
 		},
 		{
 			"title": "Топ игроков",
-			"icon": "",
+			"icon": "https://i.imgur.com/k3477wr.png",
 			"_isDone": true,
 			"list": [
 				{
@@ -41,7 +41,7 @@ window.onload = function () {
 		},
 		{
 			"title": "Квесты",
-			"icon": "",
+			"icon": "https://i.imgur.com/T0yO7SW.png",
 			"_isDone": false,
 			"list": [
 				{
@@ -56,7 +56,7 @@ window.onload = function () {
 		},
 		{
 			"title": "Банкир",
-			"icon": "",
+			"icon": "https://i.imgur.com/T0yO7SW.png",
 			"_isDone": false,
 			"list": [
 				{
@@ -71,7 +71,7 @@ window.onload = function () {
 		},
 		{
 			"title": "Круговое меню",
-			"icon": "",
+			"icon": "https://i.imgur.com/00sBlpX.png",
 			"_isDone": false,
 			"list": [
 				{
@@ -86,7 +86,7 @@ window.onload = function () {
 		},
 		{
 			"title": "Приведи друга",
-			"icon": "",
+			"icon": "https://i.imgur.com/T0yO7SW.png",
 			"_isDone": false,
 			"list": [
 				{
@@ -101,7 +101,7 @@ window.onload = function () {
 		},
 		{
 			"title": "Охотник за головами",
-			"icon": "",
+			"icon": "https://i.imgur.com/T0yO7SW.png",
 			"_isDone": false,
 			"list": [
 				{
@@ -120,7 +120,7 @@ window.onload = function () {
 		},
 		{
 			"title": "Новости обновлений",
-			"icon": "",
+			"icon": "https://i.imgur.com/T0yO7SW.png",
 			"_isDone": false,
 			"list": [
 				{
@@ -135,7 +135,7 @@ window.onload = function () {
 		},
 		{
 			"title": "Свинка почтальон",
-			"icon": "",
+			"icon": "https://i.imgur.com/T0yO7SW.png",
 			"_isDone": false,
 			"list": [
 				{
@@ -158,9 +158,9 @@ window.onload = function () {
 	//создание главной полоски
 
 	let mainLine = document.createElement('div');
-		mainLine.Id = "mainLine";
+		mainLine.id = "mainLine";
 		// mainLine.style.width  = WIDTH + "px";
-		mainLine.style.height = "5px";
+		mainLine.style.height = "7px";
 		mainLine.style.background = "#198b4c";
 
 	// Построение дерева
@@ -179,13 +179,16 @@ window.onload = function () {
 
 		var mainDotElement = document.createElement('span');
 			mainDotElement.className = "main-dot";
+			mainDotElement.id = "main-dot-"+i;
 			mainDotElement.style.left = position + 'px';
 
 
 		if (dotData._isDone) {
 			var mainActiveDotElement = document.createElement('span');
 				mainActiveDotElement.className = "mainActiveDotElement";
+				mainActiveDotElement.id = "mainActiveDotElement" + i;
 				mainActiveDotElement.style.left = position + 5 + 'px';
+				mainActiveDotElement.style.top = 11 + 'px';
 
 			mainLine.appendChild(mainActiveDotElement)
 		}
@@ -193,6 +196,7 @@ window.onload = function () {
 
 		var mainTitle = document.createElement('h1');
 			mainTitle.className = "mainTitle";
+			mainTitle.id = "mainTitle" + i;
 			mainTitle.innerHTML = dotData.title;
 			mainLine.appendChild(mainTitle); //вынужденная мера
 
@@ -208,7 +212,8 @@ window.onload = function () {
 
 
 		var lineToIcon = document.createElement('div');
-			lineToIcon.className = "lineToIcon"
+			lineToIcon.className = "lineToIcon";
+			lineToIcon.id = "lineToIcon" + i;
 			lineToIcon.style.height = lineToIconHeight + "px";
 			lineToIcon.style.left = position + mainDotElementWidth / 2 + "px";
 
@@ -220,6 +225,8 @@ window.onload = function () {
 
 		var mainIcon = document.createElement('div');
 			mainIcon.className = "mainIcon";
+			mainIcon.id = "mainIcon" + i;
+			mainIcon.dataset.id = i;
 			mainIcon.style.left = position - mainDotElementWidth / 2 + 'px'; // -1 - длина полоски lineToIcon деленая пополам
 
 		if (i % 2 == 0)
@@ -227,9 +234,24 @@ window.onload = function () {
 		else 
 			mainIcon.style.bottom = -lineToIconHeight - mainDotElementWidth  + "px";
 
+		var mainIconImg = document.createElement('div');
+			mainIconImg.className = "mainIconImg";
+			mainIconImg.id = "mainIconImg" + i;
+			mainIconImg.style.background = "url(" + dotData.icon + ") center center no-repeat";
+			mainIconImg.style.backgroundColor = "rgba(255,255,255,1)";
+
+		mainIconImg.style.left = position - mainDotElementWidth / 2 + 'px'; // -1 - длина полоски lineToIcon деленая пополам
+
+		if (i % 2 == 0)
+			mainIconImg.style.top = -lineToIconHeight - mainDotElementWidth  + "px";
+		else 
+			mainIconImg.style.bottom = -lineToIconHeight - mainDotElementWidth  + "px";
+
+
 
 		var horisontalLine = document.createElement('div');
 			horisontalLine.className = "horisontalLine";
+			horisontalLine.id = "horisontalLine" + i;
 			horisontalLine.style.left = position + mainDotElementWidth / 2 + 'px';
 			mainLine.appendChild(horisontalLine)
 
@@ -242,6 +264,7 @@ window.onload = function () {
 		var horisontalLineWidth = parseFloat(window.getComputedStyle(document.getElementsByClassName('horisontalLine')[i], null).width);
 		var verticalLine = document.createElement('div');
 			verticalLine.className = "verticalLine";
+			verticalLine.id = "verticalLine" + i;
 			verticalLine.style.left = position + mainDotElementWidth / 2  + horisontalLineWidth + 'px';
 
 		// выставляем высотку в зависимости от того, сколько пунктов меню.. (по 40на каждый элемент)
@@ -262,8 +285,10 @@ window.onload = function () {
 		for (var j = 0; j < dataJSON[i].list.length; j++) {
 			var list = dataJSON[i].list;
 
+			// маленькие кружки на вертикальной линии (бордер)
 			var smallDot = document.createElement('div');
-				smallDot.className = "smallDot";
+				smallDot.className = "smallDot smallDot"+i;
+				smallDot.id = "smallDot" + i;
 				smallDot.style.width = 15 + 'px';
 				smallDot.style.height = 15 + 'px';
 				smallDot.style.left = position + mainDotElementWidth / 2  + horisontalLineWidth - 15 / 2 + 'px';
@@ -278,7 +303,7 @@ window.onload = function () {
 
 			// создание заголовков
 			var smallTitles = document.createElement('h2')
-				smallTitles.className = "smallTitles";
+				smallTitles.className = "smallTitles smallTitles" + i;
 				smallTitles.id = "smallTitles" + i + j;
 				smallTitles.innerHTML = list[j].title;
 				mainLine.appendChild(smallTitles)
@@ -298,7 +323,8 @@ window.onload = function () {
 
 			if (list[j].status) {
 				var smallDotActive = document.createElement('div')
-					smallDotActive.className = "smallDotActive";
+					smallDotActive.className = "smallDotActive smallDotActive" + i;
+					smallDotActive.id = "smallDotActive" + i + j;
 
 				smallDotActive.style.width = 9 + 'px';
 				smallDotActive.style.height = 9 + 'px';
@@ -316,20 +342,74 @@ window.onload = function () {
 		}
 
 
+		mainIcon.addEventListener('mouseover', function () {
+			var id = this.dataset.id;
 
+			var lineToIconHover = document.getElementById('lineToIcon' + id)
+			var mainIconHover   = document.getElementById("mainIcon"   + id)
+
+			var horisontalLineHover = document.getElementById('horisontalLine' + this.dataset.id)
+			var verticalLineHover   = document.getElementById("verticalLine"   + this.dataset.id)
+
+
+			var smallDotHover 		= document.getElementsByClassName('smallDot' + id);
+			var smallTitlesHover	= document.getElementsByClassName('smallTitles' + id);
+			var smallDotActiveHover = document.getElementsByClassName('smallDotActive' + id);
+
+
+			lineToIconHover.classList.add('lineToIconHover');
+			mainIconHover.classList.add('mainIconHover');
+
+			horisontalLineHover.classList.add('horisontalLineHover');
+			verticalLineHover.classList.add('verticalLineHover');
+
+			for (var j = 0; j < smallDotHover.length; j++)
+				smallDotHover[j].classList.add("smallDotHover")
+
+			for (var j = 0; j < smallTitlesHover.length; j++)
+				smallTitlesHover[j].classList.add("smallTitlesHover")
+
+			for (var j = 0; j < smallDotActiveHover.length; j++)
+				smallDotActiveHover[j].classList.add("smallDotActiveHover")
+
+		})
+
+		mainIcon.addEventListener('mouseout', function () {
+			var id = this.dataset.id;
+
+			var lineToIconHover = document.getElementById('lineToIcon' + id)
+			var mainIconHover   = document.getElementById("mainIcon"   + id)
+
+			var horisontalLineHover = document.getElementById('horisontalLine' + id)
+			var verticalLineHover   = document.getElementById("verticalLine"   + id)
+
+			var smallDotHover 		= document.getElementsByClassName('smallDot' + id);
+			var smallTitlesHover	= document.getElementsByClassName('smallTitles' + id);
+			var smallDotActiveHover = document.getElementsByClassName('smallDotActive' + id);
+
+			lineToIconHover.classList.remove('lineToIconHover');
+			mainIconHover.classList.remove('mainIconHover');
+
+			horisontalLineHover.classList.remove('horisontalLineHover');
+			verticalLineHover.classList.remove('verticalLineHover');
+
+
+			for (var j = 0; j < smallDotHover.length; j++)
+				smallDotHover[j].classList.remove("smallDotHover")
+
+			for (var j = 0; j < smallTitlesHover.length; j++)
+				smallTitlesHover[j].classList.remove("smallTitlesHover")
+
+			for (var j = 0; j < smallDotActiveHover.length; j++)
+				smallDotActiveHover[j].classList.remove("smallDotActiveHover")
+		})
+
+
+		mainLine.appendChild(mainIconImg)
 		mainLine.appendChild(mainIcon);
 		mainLine.appendChild(lineToIcon)
 		mainLine.appendChild(mainDotElement);
 
 		leftPadding+=200;
 	}
-
-
-		
-
-
-
-	// Создание кружков
-
-	// создание поп-ап окон
 }
