@@ -245,6 +245,41 @@ body {
 
 
 
+#popupWrap {
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	position: fixed;
+	height: 100%;
+	width: 100%;
+	background: rgba(0,0,0,.3);
+	display: flex;
+	align-items: center;
+  	justify-content: center;
+  	z-index: 5;
+}
+
+#popupMain {
+	background: rgba(255,255,255,1);
+	/*border: 1px dashed #63b57c;*/
+	text-align: center;
+	z-index: 20;
+}
+
+#popupTitle {
+	padding: 15px;
+	display: block;
+	background: #63b57c;
+	color: #fff;
+	text-align: center;
+	font-size: 15px;
+}
+
+.popupMainText {
+	padding: 15px;
+}
+
 /*############*/
 
 

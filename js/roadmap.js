@@ -9,6 +9,7 @@ window.onload = function () {
 			"title": "Профиль",
 			"icon": "https://i.imgur.com/T0yO7SW.png",
 			"_isDone": true,
+			"description": "Тут будет более подробное описание всего происходящего...",
 			"list": [
 				{
 					"title": "Статистика",
@@ -28,6 +29,7 @@ window.onload = function () {
 			"title": "Топ игроков",
 			"icon": "https://i.imgur.com/k3477wr.png",
 			"_isDone": true,
+			"description": "Тут будет более подробное описание всего происходящего...",
 			"list": [
 				{
 					"title": "Списки всех",
@@ -43,6 +45,7 @@ window.onload = function () {
 			"title": "Квесты",
 			"icon": "https://i.imgur.com/T0yO7SW.png",
 			"_isDone": false,
+			"description": "Тут будет более подробное описание всего происходящего...",
 			"list": [
 				{
 					"title": "Награды",
@@ -58,6 +61,7 @@ window.onload = function () {
 			"title": "Банкир",
 			"icon": "https://i.imgur.com/T0yO7SW.png",
 			"_isDone": false,
+			"description": "Тут будет более подробное описание всего происходящего...",
 			"list": [
 				{
 					"title": "Хранение ресов",
@@ -73,6 +77,7 @@ window.onload = function () {
 			"title": "Круговое меню",
 			"icon": "https://i.imgur.com/00sBlpX.png",
 			"_isDone": false,
+			"description": "Тут будет более подробное описание всего происходящего...",
 			"list": [
 				{
 					"title": "Дизайн",
@@ -88,6 +93,7 @@ window.onload = function () {
 			"title": "Приведи друга",
 			"icon": "https://i.imgur.com/T0yO7SW.png",
 			"_isDone": false,
+			"description": "Тут будет более подробное описание всего происходящего...",
 			"list": [
 				{
 					"title": "Вк БОТ",
@@ -103,6 +109,7 @@ window.onload = function () {
 			"title": "Охотник за головами",
 			"icon": "https://i.imgur.com/T0yO7SW.png",
 			"_isDone": false,
+			"description": "Тут будет более подробное описание всего происходящего...",
 			"list": [
 				{
 					"title": "Дизайн",
@@ -122,6 +129,7 @@ window.onload = function () {
 			"title": "Новости обновлений",
 			"icon": "https://i.imgur.com/T0yO7SW.png",
 			"_isDone": false,
+			"description": "Тут будет более подробное описание всего происходящего...",
 			"list": [
 				{
 					"title": "ВК БОТ",
@@ -137,6 +145,7 @@ window.onload = function () {
 			"title": "Свинка почтальон",
 			"icon": "https://i.imgur.com/T0yO7SW.png",
 			"_isDone": false,
+			"description": "Тут будет более подробное описание всего происходящего...",
 			"list": [
 				{
 					"title": "ИИ Свинки",
@@ -403,6 +412,43 @@ window.onload = function () {
 			for (var j = 0; j < smallDotActiveHover.length; j++)
 				smallDotActiveHover[j].classList.remove("smallDotActiveHover")
 		})
+
+
+		mainIcon.addEventListener('click', function () {
+			var id = this.dataset.id;
+
+			var body = document.getElementsByTagName('body')[0]
+
+			var popupWrap = document.createElement('div');
+				popupWrap.id = "popupWrap";
+
+			var popupMain = document.createElement('div');
+				popupMain.id = "popupMain";
+
+			var popupTitle = document.createElement('h3');
+				popupTitle.id = "popupTitle";
+				popupTitle.innerHTML = dataJSON[id].title;
+
+			var popupMainText = document.createElement('p');
+				popupMainText.className = "popupMainText";
+				popupMainText.innerHTML = dataJSON[id].description;
+				
+
+
+			popupMain.appendChild(popupTitle)
+			popupMain.appendChild(popupMainText)
+			popupWrap.appendChild(popupMain)
+			body.appendChild(popupWrap)
+
+			popupWrap.addEventListener('click', function (e) {
+
+				if (this != e.target)
+					return;
+
+				this.parentNode.removeChild(this);
+
+			})
+		});
 
 
 		mainLine.appendChild(mainIconImg)
